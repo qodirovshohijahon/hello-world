@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                echo 'Hello World from date
+                echo 'Hello World from date'
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 echo "Node Name ${NODE_NAME} workspace ${WORKSPACE}"
 
