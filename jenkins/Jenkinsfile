@@ -4,13 +4,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;  
 import java.util.Locale;
 
-
-
-
     def sdf = new SimpleDateFormat('dd-MM-yyyy')
     def dateDefaultValue = sdf.format(new Date().plusDays(2))
     def day = dateDefaultValue.plus(1)
-    def date = new Date();  
+    def date = new Date().plus(2);  
     def strDate = formatter.format(date);  
 
 pipeline {
@@ -27,8 +24,9 @@ pipeline {
         stage('Example') {
             steps {
                 echo "Hello Worl  d from date ${env.SOMEDATE}"
-                echo "------- ${day}"
+                echo "------- ${date}"
                 echo "Running ${env.BUILD_ID} on  ${env.JENKINS_URL}"
+                echo "------- ${env.date}"
                 echo "Node Name ${NODE_NAME} workspace ${WORKSPACE}"
             }
         }
