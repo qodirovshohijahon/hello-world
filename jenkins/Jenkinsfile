@@ -12,6 +12,7 @@ import java.util.Locale;
     def yesterday = today - 1
     def next = today.format("yyyy-MM-dd")
     def deleteionTime = today + 2
+    def formattedDeletionTime = deleteionTime.format("dd-MM-yyyy")
     def prev = yesterday.format("yyyy-MM-dd")
 
 pipeline {
@@ -19,7 +20,7 @@ pipeline {
     parameters {
         string(
             name: 'SOMEDATE',
-            defaultValue: "${deleteionTime}",
+            defaultValue: "${formattedDeletionTime}",
             description: 'Default value is current date in the format YYYYmmdd',
             trim: true
         )
