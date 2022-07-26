@@ -1,18 +1,35 @@
 import java.text.SimpleDateFormat
+import java.text.ParseException;  
+import java.text.SimpleDateFormat;  
+import java.util.Date;  
+import java.util.Locale;
+
+
+
 
     def sdf = new SimpleDateFormat('dd-MM-yyyy')
     def dateDefaultValue = sdf.format(new Date())
     def day = dateDefaultValue.plus(1)
+    def date = new Date();  
+    def strDate = formatter.format(date);  
 
 pipeline {
     agent any
+    environment {
+        currentDate = sh(returnStdout: true, script: 'date +%d-%m-%Y').trim()
+    }    
     parameters {
         string(
             name: 'SOMEDATE',
             defaultValue: "${dateDefaultValue}",
             description: 'Default value is current date in the format YYYYmmdd',
             trim: true
-        )
+        ),
+        [
+            $class: 'StringParameterValue',
+            name: 'ReleaseDate',
+            value: "${currentDate}"
+        ]        
     }
     stages {
         stage('Example') {
