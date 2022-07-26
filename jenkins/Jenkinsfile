@@ -1,12 +1,24 @@
+import java.text.SimpleDateFormat
+
+    def sdf = new SimpleDateFormat('yyyyMMdd')
+    def dateDefaultValue = sdf.format(new Date())
+
 pipeline {
     agent any
+    parameters {
+        string(
+            name: 'SOMEDATE',
+            defaultValue: "${dateDefaultValue}",
+            description: 'Default value is current date in the format YYYYmmdd',
+            trim: true
+        )
+    }
     stages {
         stage('Example') {
             steps {
                 echo 'Hello Worl  d from date '
                 echo "Running ${env.BUILD_ID} on  ${env.JENKINS_URL}"
                 echo "Node Name ${NODE_NAME} workspace ${WORKSPACE}"
-
             }
         }
     }
