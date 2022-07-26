@@ -5,10 +5,13 @@ import java.util.Date;
 import java.util.Locale;
 
     def sdf = new SimpleDateFormat('dd-MM-yyyy')
-    def dateDefaultValue = sdf.format(new Date().plusDays(2))
-    def day = dateDefaultValue.plus(1)
-    def date = new Date().plus(2);  
+    // def dateDefaultValue = sdf.format(new Date().plusDays(2))
+    // def date = new Date().plus(2);  
     def strDate = formatter.format(date);  
+    def today = new Date()
+    def yesterday = today + 3
+    def next = today.format("yyyy-MM-dd")
+    def prev = yesterday.format("yyyy-MM-dd")
 
 pipeline {
     agent any
@@ -23,6 +26,9 @@ pipeline {
     stages {
         stage('Example') {
             steps {
+                echo "------- ${env.yesterday}"
+                echo "------- ${env.prev}"
+                echo "------- ${env.next}"
                 echo "Hello Worl  d from date ${env.SOMEDATE}"
                 echo "------- ${date}"
                 echo "Running ${env.BUILD_ID} on  ${env.JENKINS_URL}"
