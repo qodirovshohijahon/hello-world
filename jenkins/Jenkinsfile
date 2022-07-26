@@ -26,13 +26,11 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                echo "------- ${env.yesterday}"
-                echo "------- ${env.prev}"
-                echo "------- ${env.next}"
+                echo "------- ${yesterday}"
+                echo "------- ${prev}"
+                echo "------- ${next}"
                 echo "Hello Worl  d from date ${env.SOMEDATE}"
-                echo "------- ${date}"
                 echo "Running ${env.BUILD_ID} on  ${env.JENKINS_URL}"
-                echo "------- ${env.date}"
                 echo "Node Name ${NODE_NAME} workspace ${WORKSPACE}"
             }
         }
