@@ -7,7 +7,7 @@ import java.util.Locale;
     def sdf = new SimpleDateFormat('dd-MM-yyyy')
     // def dateDefaultValue = sdf.format(new Date().plusDays(2))
     // def date = new Date().plus(2);  
-    def strDate = formatter.format(date);  
+    // def strDate = formatter.format(date);  
     def today = new Date()
     def yesterday = today + 3
     def next = today.format("yyyy-MM-dd")
