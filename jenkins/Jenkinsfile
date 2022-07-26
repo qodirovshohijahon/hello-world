@@ -9,7 +9,7 @@ import java.util.Locale;
     // def date = new Date().plus(2);  
     // def strDate = formatter.format(date);  
     def today = new Date()
-    def yesterday = today + 3
+    def yesterday = today - 1
     def next = today.format("yyyy-MM-dd")
     def prev = yesterday.format("yyyy-MM-dd")
 
