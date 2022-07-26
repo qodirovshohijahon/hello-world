@@ -1,7 +1,8 @@
 import java.text.SimpleDateFormat
 
-    def sdf = new SimpleDateFormat('ddMMyyyy')
+    def sdf = new SimpleDateFormat('dd-MM-yyyy')
     def dateDefaultValue = sdf.format(new Date())
+    def day = dateDefaultValue.plus(1)
 
 pipeline {
     agent any
@@ -17,6 +18,7 @@ pipeline {
         stage('Example') {
             steps {
                 echo "Hello Worl  d from date ${env.SOMEDATE}"
+                echo "------- ${day}"
                 echo "Running ${env.BUILD_ID} on  ${env.JENKINS_URL}"
                 echo "Node Name ${NODE_NAME} workspace ${WORKSPACE}"
             }
